@@ -16,7 +16,8 @@ app.listen(8000)
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    // origin: "http://localhost:3000",
+    origin: "https://getfulfil.com",
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   })
 );
@@ -46,6 +47,8 @@ sgMail
 
 });
 
+
+
 app.post("/sendDoerWelcomeEmail", async (req, res) => {
     console.log(req.body)
     const userEmail = req.body.email
@@ -54,6 +57,128 @@ const msg = {
   from: 'john@getfulfil.com', // Change to your verified sender
   subject: 'Welcome to Fulfil!',
   templateId: 'd-a82c97f28d284103815d072e6b4f55f9'
+}
+sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+
+});
+
+app.post("/sendNewMessageEmail", async (req, res) => {
+    console.log(req.body)
+    const userEmail = req.body.email
+const msg = {
+  to: userEmail, // Change to your recipient
+  from: 'john@getfulfil.com', // Change to your verified sender
+  subject: 'You have a new message',
+  templateId: 'd-a9b3a50cd58a4ef987f5b7b67c7835c5'
+}
+sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+
+});
+
+app.post("/sendNewApplicantEmail", async (req, res) => {
+    console.log(req.body)
+    const userEmail = req.body.email
+const msg = {
+//   to: userEmail, // Change to your recipient
+to: userEmail, // Change to your recipient
+  from: 'john@getfulfil.com', // Change to your verified sender
+  subject: 'You have a new applicant!',
+  templateId: 'd-350b9008d45649359d5b7d05cb5d423c'
+}
+sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+
+});
+
+
+app.post("/sendJobCompleteEmail", async (req, res) => {
+    console.log(req.body)
+    const userEmail = req.body.email
+const msg = {
+  to: userEmail, // Change to your recipient
+  from: 'john@getfulfil.com', // Change to your verified sender
+  subject: 'Your job has been marked complete!',
+  templateId: 'd-b2106cc37618468eb39bb012a0bdde6a'
+}
+sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+
+});
+
+app.post("/sendOfferAcceptedEmail", async (req, res) => {
+    console.log(req.body)
+    const userEmail = req.body.email
+const msg = {
+  to: userEmail, // Change to your recipient
+  from: 'john@getfulfil.com', // Change to your verified sender
+  subject: 'Your offer has been accepted!',
+  templateId: 'd-9f45ed4718b54c7ab28acbeeb1407d49'
+}
+sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+
+});
+
+app.post("/sendNewOfferEmail", async (req, res) => {
+    console.log(req.body)
+    const userEmail = req.body.email
+const msg = {
+  to: userEmail, // Change to your recipient
+  from: 'john@getfulfil.com', // Change to your verified sender
+  subject: "You've received a new offer!",
+  templateId: 'd-daad39bd920645d98108af8fe4023735'
+}
+sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+
+});
+
+app.post("/sendPaymentCompleteEmail", async (req, res) => {
+    console.log(req.body)
+    const userEmail = req.body.email
+const msg = {
+  to: userEmail, // Change to your recipient
+  from: 'john@getfulfil.com', // Change to your verified sender
+  subject: "You've received a payment for work you completed",
+  templateId: 'd-f9fd757441ae4d2eac18e956423cba9e'
 }
 sgMail
   .send(msg)
