@@ -32,8 +32,28 @@ app.post("/sendNeederWelcomeEmail", async (req, res) => {
 const msg = {
   to: userEmail, // Change to your recipient
   from: 'john@getfulfil.com', // Change to your verified sender
-  subject: 'Sending with SendGrid is Fun',
+  subject: 'Welcome to Fulfil!',
   templateId: 'd-5cceab9612f94ddb8103006d4e5d5e63'
+}
+sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+
+});
+
+app.post("/sendDoerWelcomeEmail", async (req, res) => {
+    console.log(req.body)
+    const userEmail = req.body.email
+const msg = {
+  to: userEmail, // Change to your recipient
+  from: 'john@getfulfil.com', // Change to your verified sender
+  subject: 'Welcome to Fulfil!',
+  templateId: 'd-a82c97f28d284103815d072e6b4f55f9'
 }
 sgMail
   .send(msg)
