@@ -10,7 +10,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 dotenv.config();
 
-app.listen(8000)
+
+//this is what I muted
+// app.listen(8000)
 
 
 
