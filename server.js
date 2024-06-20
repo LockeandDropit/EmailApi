@@ -12,7 +12,7 @@ dotenv.config();
 
 
 //this is what I muted
-// app.listen(8000)
+app.listen(8000)
 
 
 
@@ -33,28 +33,53 @@ const client = require('@sendgrid/client');
 client.setApiKey(process.env.SEND_GRID_API);
 
 
-app.post("/newEmailSignUp", async (req, res) => {
-  const data = {
-    "contacts": [
-      {
-        "email" :  req.body.email
-      }
-    ]
-  };
+// app.post("/newEmailSignUp", async (req, res) => {
+//   console.log("req", req)
+//   console.log("req", req.body)
+//   console.log("req", req.body.email)
 
-  const request = {
-    url: `/v3/marketing/contacts`,
-    method: 'PUT',
-    body: data
-  }
-  client.request(request)
-  .then(([response, body]) => {
-    console.log(response.statusCode);
-    console.log(response.body);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+//   const data = {
+//     "contacts": [
+//       {
+//         "email" :  req.body.email
+//       }
+//     ]
+//   };
+
+//   const request = {
+//     url: `https://api.sendgrid.com/v3/marketing/contacts`,
+//     method: 'PUT',
+//     body: data
+//   }
+
+//   client.request(request)
+//   .then(([response, body]) => {
+//     console.log(response.statusCode);
+//     console.log(response.body);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
+
+// });
+
+app.post("/newEmailSignUp", async (req, res) => {
+  console.log(req.body)
+  const userEmail = req.body.email
+const msg = {
+to: userEmail, // Change to your recipient
+from: 'tyler@getfulfil.com', // Change to your verified sender
+subject: 'Check back for more job openings soon!',
+templateId: 'd-282d9f95969a43b88e0d7a0054c40f6f '
+}
+sgMail
+.send(msg)
+.then(() => {
+  console.log('Email sent')
+})
+.catch((error) => {
+  console.error(error)
+})
 
 });
 
