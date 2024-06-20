@@ -28,7 +28,7 @@ const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SEND_GRID_API)
 
 const client = require('@sendgrid/client');
-client.setApiKey(process.env.SENDGRID_API_KEY);
+client.setApiKey(process.env.SEND_GRID_API);
 
 
 app.post("/newEmailSignUp", async (req, res) => {
