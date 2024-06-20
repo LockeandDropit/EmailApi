@@ -68,7 +68,7 @@ app.post("/newEmailSignUp", async (req, res) => {
   const userEmail = req.body.email
 const msg = {
 to: userEmail, // Change to your recipient
-from: 'john@getfulfil.com', // Change to your verified sender
+from: 'tyler@getfulfil.com', // Change to your verified sender
 subject: 'Check back for more job openings soon!',
 templateId: 'd-282d9f95969a43b88e0d7a0054c40f6f'
 }
