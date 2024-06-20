@@ -32,10 +32,18 @@ client.setApiKey(process.env.SEND_GRID_API);
 
 
 app.post("/newEmailSignUp", async (req, res) => {
+  const data = {
+    "contacts": [
+      {
+        "email" :  req.body.email
+      }
+    ]
+  };
+
   const request = {
     url: `/v3/marketing/contacts`,
     method: 'PUT',
-    body: req.body.email
+    body: data
   }
   client.request(request)
   .then(([response, body]) => {
