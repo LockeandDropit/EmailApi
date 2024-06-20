@@ -27,6 +27,27 @@ console.log("hey")
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SEND_GRID_API)
 
+const client = require('@sendgrid/client');
+client.setApiKey(process.env.SENDGRID_API_KEY);
+
+
+app.post("/newEmailSignUp", async (req, res) => {
+  const request = {
+    url: `/v3/marketing/contacts`,
+    method: 'PUT',
+    body: req.body.email
+  }
+  client.request(request)
+  .then(([response, body]) => {
+    console.log(response.statusCode);
+    console.log(response.body);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+});
+
 app.post("/sendNeederWelcomeEmail", async (req, res) => {
     console.log(req.body)
     const userEmail = req.body.email
