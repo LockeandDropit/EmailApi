@@ -29,8 +29,8 @@ console.log("hey")
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SEND_GRID_API)
 
-const client = require('@sendgrid/client');
-client.setApiKey(process.env.SEND_GRID_API);
+// const client = require('@sendgrid/client');
+// client.setApiKey(process.env.SEND_GRID_API);
 
 
 // app.post("/newEmailSignUp", async (req, res) => {
@@ -68,14 +68,14 @@ app.post("/newEmailSignUp", async (req, res) => {
   const userEmail = req.body.email
 const msg = {
 to: userEmail, // Change to your recipient
-from: 'tyler@getfulfil.com', // Change to your verified sender
+from: 'john@getfulfil.com', // Change to your verified sender
 subject: 'Check back for more job openings soon!',
-templateId: 'd-282d9f95969a43b88e0d7a0054c40f6f '
+templateId: 'd-282d9f95969a43b88e0d7a0054c40f6f'
 }
 sgMail
 .send(msg)
 .then(() => {
-  console.log('Email sent')
+  console.log('Email sent email sign up')
 })
 .catch((error) => {
   console.error(error)
