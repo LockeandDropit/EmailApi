@@ -90,7 +90,7 @@ const msg = {
   to: userEmail, // Change to your recipient
   from: 'john@getfulfil.com', // Change to your verified sender
   subject: 'Welcome to Fulfil!',
-  templateId: 'd-5cceab9612f94ddb8103006d4e5d5e63'
+  templateId: 'd-102401653b5348abbca269b54aafc3a4'
 }
 sgMail
   .send(msg)
@@ -112,7 +112,7 @@ const msg = {
   to: userEmail, // Change to your recipient
   from: 'john@getfulfil.com', // Change to your verified sender
   subject: 'Welcome to Fulfil!',
-  templateId: 'd-a82c97f28d284103815d072e6b4f55f9'
+  templateId: 'd-81b41d874a444eb0acb06db88fd8b4c7'
 }
 sgMail
   .send(msg)
