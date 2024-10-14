@@ -101,7 +101,7 @@ const msg = {
 sgMail
   .send(msg)
   .then(() => {
-    console.log('Email sent')
+    console.log('Email sent 1')
   })
   .catch((error) => {
     console.error(error)
@@ -143,7 +143,7 @@ const msg = {
 sgMail
   .send(msg)
   .then(() => {
-    console.log('Email sent')
+    console.log('Email sent 2')
   })
   .catch((error) => {
     console.error(error)
@@ -164,7 +164,7 @@ to: userEmail, // Change to your recipient
 sgMail
   .send(msg)
   .then(() => {
-    console.log('Email sent')
+    console.log('Email sent 3')
   })
   .catch((error) => {
     console.error(error)
@@ -185,7 +185,7 @@ const msg = {
 sgMail
   .send(msg)
   .then(() => {
-    console.log('Email sent')
+    console.log('Email sent 4')
   })
   .catch((error) => {
     console.error(error)
@@ -205,7 +205,7 @@ const msg = {
 sgMail
   .send(msg)
   .then(() => {
-    console.log('Email sent')
+    console.log('Email sent 5')
   })
   .catch((error) => {
     console.error(error)
@@ -225,7 +225,7 @@ const msg = {
 sgMail
   .send(msg)
   .then(() => {
-    console.log('Email sent')
+    console.log('Email sent 6')
   })
   .catch((error) => {
     console.error(error)
@@ -233,25 +233,25 @@ sgMail
 
 });
 
-app.post("/sendPaymentCompleteEmail", async (req, res) => {
-    console.log(req.body)
-    const userEmail = req.body.email
-const msg = {
-  to: userEmail, // Change to your recipient
-  from: 'john@getfulfil.com', // Change to your verified sender
-  subject: "You've received a payment for work you completed",
-  templateId: 'd-f9fd757441ae4d2eac18e956423cba9e'
-}
-sgMail
-  .send(msg)
-  .then(() => {
-    console.log('Email sent')
-  })
-  .catch((error) => {
-    console.error(error)
-  })
+// app.post("/sendPaymentCompleteEmail", async (req, res) => {
+//     console.log(req.body)
+//     const userEmail = req.body.email
+// const msg = {
+//   to: userEmail, // Change to your recipient
+//   from: 'john@getfulfil.com', // Change to your verified sender
+//   subject: "You've received a payment for work you completed",
+//   templateId: 'd-f9fd757441ae4d2eac18e956423cba9e'
+// }
+// sgMail
+//   .send(msg)
+//   .then(() => {
+//     console.log('Email sent 7')
+//   })
+//   .catch((error) => {
+//     console.error(error)
+//   })
 
-});
+// });
 
 
 
@@ -287,6 +287,7 @@ app.post("/sendDoerWelcomeEmail", async (req, res) => {
   mailerlite.subscribers.createOrUpdate(params)
   .then(response => {
     console.log(response.data);
+    console.log("we sent your email! -mailerlite")
   })
   .catch(error => {
     if (error.response) console.log(error.response.data);
