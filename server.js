@@ -261,7 +261,7 @@ sgMail
 // MailerLite Drip campaign starts now
 
 const params = {
-  email: "dummy@example.com",
+  email: "john.m.hellevik@gmail.com",
   fields: {
     name: "Dummy",
     last_name: "Testerson",
@@ -272,7 +272,7 @@ const params = {
     state: "Best state",
     z_i_p: "99999"
   },
-  groups: ["4243829086487936"],
+  groups: ["Doers"],
   status: "active", // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
   subscribed_at: "2021-08-31 14:22:08",
   ip_address: null,
