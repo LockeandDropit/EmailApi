@@ -267,33 +267,36 @@ sgMail
 app.post("/sendDoerWelcomeEmail", async (req, res) => {
   console.log("mailer lite")
   console.log(req.body.email)
-  // const params = {
-  //   email: req.body.email,
-  //   fields: {
-  //     name: "Dummy",
-  //     last_name: "Testerson",
-  //     company: "MailerLite",
-  //     country: "Best country",
-  //     city: "Best city",
-  //     phone: "37060677606",
-  //     state: "Best state",
-  //     z_i_p: "99999"
-  //   },
-  //   groups: ["134644341942518874"],
-  //   status: "active", // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
-  //   subscribed_at: "2021-08-31 14:22:08",
-  //   ip_address: null,
-  //   opted_in_at: null, // yyyy-MM-dd HH:mm:ss
-  //   optin_ip: null,
-  //   unsubscribed_at: null // yyyy-MM-dd HH:mm:ss
-  // };
+  console.log(req.body.firstName)
+  console.log(req.body.lastName)
+  
+  const params = {
+    email: req.body.email,
+    fields: {
+      name: req.body.firstName,
+      last_name: req.body.lastName,
+      company: "MailerLite",
+      country: "Best country",
+      city: "Best city",
+      phone: "37060677606",
+      state: "Best state",
+      z_i_p: "99999"
+    },
+    groups: ["134644341942518874"],
+    status: "active", // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
+    subscribed_at: "2021-08-31 14:22:08",
+    ip_address: null,
+    opted_in_at: null, // yyyy-MM-dd HH:mm:ss
+    optin_ip: null,
+    unsubscribed_at: null // yyyy-MM-dd HH:mm:ss
+  };
 
-  // mailerlite.subscribers.createOrUpdate(params)
-  // .then(response => {
-  //   console.log(response.data);
-  //   console.log("we sent your email! -mailerlite")
-  // })
-  // .catch(error => {
-  //   if (error.response) console.log(error.response.data);
-  // });
+  mailerlite.subscribers.createOrUpdate(params)
+  .then(response => {
+    console.log(response.data);
+    console.log("we sent your email! -mailerlite")
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
 });
