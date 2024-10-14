@@ -272,7 +272,7 @@ const params = {
     state: "Best state",
     z_i_p: "99999"
   },
-  groups: ["Doers"],
+  groups: ["134644341942518874"],
   status: "active", // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
   subscribed_at: "2021-08-31 14:22:08",
   ip_address: null,
