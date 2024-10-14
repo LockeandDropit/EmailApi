@@ -11,6 +11,14 @@ app.use(express.urlencoded({ extended: true }));
 dotenv.config();
 
 
+// For ECMAScript (ESM)
+import MailerLite from '@mailerlite/mailerlite-nodejs';
+
+const mailerlite = new MailerLite({
+  api_key: REACT_APP_MAILERLITE_API_KEY
+});
+
+
 //this is what I muted
 app.listen(8000)
 
@@ -105,25 +113,25 @@ sgMail
 
 
 
-app.post("/sendDoerWelcomeEmail", async (req, res) => {
-    console.log(req.body)
-    const userEmail = req.body.email
-const msg = {
-  to: userEmail, // Change to your recipient
-  from: 'john@getfulfil.com', // Change to your verified sender
-  subject: 'Welcome to Fulfil!',
-  templateId: 'd-81b41d874a444eb0acb06db88fd8b4c7'
-}
-sgMail
-  .send(msg)
-  .then(() => {
-    console.log('Email sent')
-  })
-  .catch((error) => {
-    console.error(error)
-  })
+// app.post("/sendDoerWelcomeEmail", async (req, res) => {
+//     console.log(req.body)
+//     const userEmail = req.body.email
+// const msg = {
+//   to: userEmail, // Change to your recipient
+//   from: 'john@getfulfil.com', // Change to your verified sender
+//   subject: 'Welcome to Fulfil!',
+//   templateId: 'd-81b41d874a444eb0acb06db88fd8b4c7'
+// }
+// sgMail
+//   .send(msg)
+//   .then(() => {
+//     console.log('Email sent')
+//   })
+//   .catch((error) => {
+//     console.error(error)
+//   })
 
-});
+// });
 
 app.post("/sendNewMessageEmail", async (req, res) => {
     console.log(req.body)
@@ -245,4 +253,44 @@ sgMail
     console.error(error)
   })
 
+});
+
+
+
+
+
+
+// MailerLite Drip campaign starts now
+
+const params = {
+  email: "dummy@example.com",
+  fields: {
+    name: "Dummy",
+    last_name: "Testerson",
+    company: "MailerLite",
+    country: "Best country",
+    city: "Best city",
+    phone: "37060677606",
+    state: "Best state",
+    z_i_p: "99999"
+  },
+  groups: ["4243829086487936"],
+  status: "active", // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
+  subscribed_at: "2021-08-31 14:22:08",
+  ip_address: null,
+  opted_in_at: null, // yyyy-MM-dd HH:mm:ss
+  optin_ip: null,
+  unsubscribed_at: null // yyyy-MM-dd HH:mm:ss
+};
+
+
+
+app.post("/sendDoerWelcomeEmail", async (req, res) => {
+  mailerlite.subscribers.createOrUpdate(params)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) console.log(error.response.data);
+  });
 });
