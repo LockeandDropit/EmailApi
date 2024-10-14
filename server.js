@@ -5,14 +5,12 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 const express = require('express')
 const app = express();
+const MailerLite = require('@mailerlite/mailerlite-nodejs').default;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 dotenv.config();
 
-
-// For ECMAScript (ESM)
-import MailerLite from '@mailerlite/mailerlite-nodejs';
 
 const mailerlite = new MailerLite({
   api_key: REACT_APP_MAILERLITE_API_KEY
