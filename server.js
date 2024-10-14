@@ -13,7 +13,7 @@ dotenv.config();
 
 
 const mailerlite = new MailerLite({
-  api_key: REACT_APP_MAILERLITE_API_KEY
+  api_key: process.env.REACT_APP_MAILERLITE_API_KEY
 });
 
 
