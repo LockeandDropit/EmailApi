@@ -262,7 +262,7 @@ sgMail
 
 
 app.post("/sendDoerNotSubscribed", async (req, res) => {
-  console.log("mailer lite")
+  console.log("mailer lite not subscribed")
   
   const params = {
     email: req.body.email,
